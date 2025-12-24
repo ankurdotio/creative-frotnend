@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Throttle vs Debounce | Aerodynamic UI</title>
+    <style>
+        /* --- 1. THE ENVIRONMENT --- */
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
+        
+        body {
+            background-color: #0a0a0a;
+            color: white;
+            /* Create a long scroll area with a pattern so we see movement */
+            height: 500vh; 
+            background-image: linear-gradient(#505050 1px, transparent 1px);
+            background-size: 50px 50px;
+        }
+
+        /* --- 2. THE CAPSULE (Resting State) --- */
+        .capsule {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translateX(-50%);
+            
+            /* Dimensions */
+            width: 280px;
+            height: 60px;
+            
+            /* Styling */
+            background: #fff;
+            color: #000;
+            border-radius: 50px;
+            box-shadow: 0 10px 30px rgba(255, 255, 255, 0.15);
+            
+            /* Flex layout */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            
+            /* THE MAGIC: Smooth Morphing */
+            transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            overflow: hidden;
+            z-index: 100;
+        }
+
+        /* Content inside the capsule */
+        .capsule .content {
+            font-weight: 600;
+            font-size: 1rem;
+            white-space: nowrap;
+            transition: opacity 0.2s ease;
+        }
+
+        .capsule .icon {
+            display: none; /* Hidden by default */
+            font-size: 1.5rem;
+            animation: spin 1s linear infinite;
+        }
+
+        /* --- 3. THE SHRINKING STATE (Active Scrolling) --- */
+        .capsule.shrinking {
+            width: 60px; /* Shrink to circle */
+            height: 60px;
+            background: #ff0055; /* Visual feedback color */
+            box-shadow: 0 0 20px #ff0055;
+        }
+
+        /* Hide text when shrinking */
+        .capsule.shrinking .content {
+            opacity: 0;
+            display: none;
+        }
+
+        /* Show icon when shrinking */
+        .capsule.shrinking .icon {
+            display: block;
+        }
+
+        @keyframes spin { 100% { transform: rotate(360deg); } }
+    </style>
+</head>
+<body>
+
+
+    <div class="capsule">
+        <span class="content">Subscribe to Newsletter</span>
+        <span class="icon">⚡</span>
+    </div>
+
+    <script>
+        // --- UTILITY FUNCTIONS (The Lesson) ---
+
+        // 1. THROTTLE: "Run this function at most once every X milliseconds"
+        // Use Case: Updates visuals WHILE scrolling (The shrinking action)
+        const throttle = (func, limit) => {
+            let inThrottle;
+            return function() {
+                const args = arguments;
+                const context = this;
+                if (!inThrottle) {
+                    func.apply(context, args);
+                    inThrottle = true;
+                    setTimeout(() => inThrottle = false, limit);
+                }
+            }
+        }
+
+        // 2. DEBOUNCE: "Run this function only after the user STOPS for X milliseconds"
+        // Use Case: Detects when scrolling stops (The expansion action)
+        const debounce = (func, delay) => {
+            let inDebounce;
+            return function() {
+                const context = this;
+                const args = arguments;
+                clearTimeout(inDebounce);
+                inDebounce = setTimeout(() => func.apply(context, args), delay);
+            }
+        }
+
+        // --- APPLICATION LOGIC ---
+
+        const capsule = document.querySelector('.capsule');
+
+        // Action 1: Shrink the capsule (Throttled to save performance)
+        const shrinkCapsule = () => {
+            if(!capsule.classList.contains('shrinking')) {
+                capsule.classList.add('shrinking');
+            }
+        }
+
+        // Action 2: Expand the capsule (Debounced to wait for stop)
+        const expandCapsule = debounce(() => {
+            capsule.classList.remove('shrinking');
+        }, 500); // 500ms delay after scroll stops
+
+        // --- THE LISTENER ---
+        
+        window.addEventListener('scroll', () => {
+            // "I am moving!" -> Go aerodynamic
+            shrinkCapsule();
+            
+            // "I might be stopping..." -> Wait and see
+            expandCapsule();
+        });
+
+    </script>
+</body>
+</html>

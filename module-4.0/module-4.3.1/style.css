@@ -1,0 +1,86 @@
+* {
+    margin: 0%;
+    padding: 0%;
+    box-sizing: border-box;
+}
+
+html,
+body {
+    height: 100%;
+    width: 100%;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background-color: #111;
+
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+@property --progress {
+    syntax: "<percentage>";
+    initial-value: 0%;
+    inherits: false;
+}
+
+.card {
+    background-color: #aaaaaa;
+    width: 90%;
+    max-width: 300px;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+@keyframes skeletonLoading {
+    from {
+        --progress: 0%;
+    }
+
+    to {
+        --progress: 200%;
+    }
+}
+
+.img-cover {
+    width: 100%;
+    aspect-ratio: 4/3;
+
+}
+
+.img-cover img{
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+}
+
+.text-box {
+    padding: 30px;
+}
+
+.text-box h1 {
+    width: 100%;
+    height: 32px;
+
+
+
+}
+
+.text-box p {
+    width: 100%;
+    height: 16px;
+
+    margin-top: 20px;
+
+}
+
+
+.skeleton {
+    background: linear-gradient(70deg, rgba(255, 0, 0, 0), rgb(255, 255, 255) var(--progress), transparent);
+    animation-name: skeletonLoading;
+    animation-duration: 1s;
+    animation-timing-function: ease-out;
+    animation-iteration-count: infinite;
+}

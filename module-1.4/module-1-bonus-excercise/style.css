@@ -1,0 +1,71 @@
+* {
+    margin: 0%;
+    padding: 0%;
+    box-sizing: border-box;
+}
+
+html,
+body {
+    height: 100%;
+    width: 100%;
+}
+
+
+body {
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+
+    background-color: black;
+
+    padding: 200px;
+
+    gap: 20px;
+
+    transition: all 0.7s ease-in-out;
+
+}
+
+body:has(.img-cover[character="black-panther"]:hover) {
+    background-color: #260041;
+}
+
+body:has(.img-cover[character="ironman"]:hover) {
+    background-color: #560004;
+}
+
+body:has(.img-cover[character="loki"]:hover) {
+    background-color: #011900;
+}
+
+body:has(.img-cover[character="doctor-strange"]:hover) {
+    background-color: #280300;
+}
+
+body:has(.img-cover:hover) .img-cover:not(:hover){
+    opacity: 0.5;
+    transform: scale(0.8);
+}
+
+
+
+.img-cover {
+    flex-basis: 17vw;
+    flex-grow: 0;
+    transition: all 0.7s ease-in-out;
+    height: 80vh;
+
+    border-radius: 200px;
+    overflow: hidden;
+}
+
+.img-cover:hover {
+    flex-grow: 1;
+}
+
+img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+}

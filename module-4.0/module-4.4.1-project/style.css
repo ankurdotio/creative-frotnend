@@ -1,0 +1,151 @@
+* {
+    margin: 0%;
+    padding: 0%;
+    box-sizing: border-box;
+}
+
+html,
+body {
+    height: 100%;
+    width: 100%;
+}
+
+
+body {
+    background-color: #111;
+
+    color: white;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.filters{
+    padding: 100px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    gap: 40px;
+}
+
+.filters input{
+    background-color: #333;
+    border: none;
+    outline: none;
+
+    padding-inline: 20px;
+    padding-block: 10px;
+    color: white;
+
+    border-radius: 20px;
+
+}
+
+.users{
+    padding-inline: 200px;
+    padding-block: 100px;
+
+    display: flex;
+    flex-wrap: wrap;
+
+    gap: 30px;
+
+}
+
+.user-card {
+    width: 90%;
+    max-width: 300px;
+
+    background-color: #333;
+    border-radius: 10px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    overflow: hidden;
+
+    position: relative;
+    padding-top: 40px;
+}
+
+.status{
+    position: absolute;
+    top: 15px;
+    right: 15px;
+
+    background-color: #4e4e4e;
+    padding: 5px;
+    padding-inline: 15px;
+    border-radius: 20px;
+
+    text-transform: uppercase;
+    font-weight: 800;
+
+    font-family: monospace;
+}
+
+.status.active{
+    color: rgb(68, 234, 179);
+    background-color: rgba(168, 255, 226, 0.328);
+}
+
+.status.inactive{
+    color: rgb(255, 136, 162);
+    background-color: rgba(255, 135, 161, 0.499);
+}
+
+.user-card .profile-img {
+    width: 40%;
+
+    aspect-ratio: 1/1;
+
+    border-radius: 50%;
+
+    overflow: hidden;
+}
+
+.user-card .profile-img img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+}
+
+.user-card .user-name {
+    margin-top: 30px;
+}
+
+.user-card .role {
+    margin-top: 5px;
+    font-size: 20px;
+    color: rgb(255, 124, 255);
+}
+
+.user-card .bio{
+    margin-block: 15px;
+    font-style: italic;
+    opacity: 0.8;
+}
+.user-card .bio::after,.user-card .bio::before{
+    content: '"';
+}
+
+
+.user-card p {
+    margin-inline: 20px;
+    text-align: center;
+}
+
+.user-card .text-box{
+    display: flex;
+    justify-content: space-between;
+
+    width: 100%;
+
+    padding: 15px;
+
+    background-color: #202020;
+    border-top: 1px solid rgba(255, 255, 255, 0.589);
+
+    margin-top: auto;
+}

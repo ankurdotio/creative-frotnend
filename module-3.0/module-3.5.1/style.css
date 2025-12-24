@@ -1,0 +1,40 @@
+* {
+    margin: 0%;
+    padding: 0%;
+    box-sizing: border-box;
+}
+
+html,
+body {
+    height: 100%;
+    width: 100%;
+}
+
+body {
+    background-color: #111;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+form{
+    display: flex;
+    flex-direction: column;
+
+    gap: 20px;
+}
+
+input{
+    border: none;
+    outline: none;
+
+    background-color: #222;
+
+    padding-inline: 20px;
+    padding-block: 10px;
+
+    border-radius: 10px;
+
+    color: white;
+}

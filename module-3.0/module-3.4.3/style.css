@@ -1,0 +1,104 @@
+* {
+    margin: 0%;
+    padding: 0%;
+    box-sizing: border-box;
+}
+
+html,
+body {
+    height: 100%;
+    width: 100%;
+}
+
+body {
+    background-color: #111;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.form-group {
+    color: whitesmoke;
+    position: relative;
+}
+
+input {
+    padding-inline: 20px;
+    padding-block: 10px;
+    background-color: #323232;
+    padding-right: 30px;
+
+    border: 1px solid transparent;
+    outline: none;
+    border-radius: 10px;
+
+    color: inherit;
+    transition: all 0.3s linear;
+}
+
+i {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    transition: all 0.3s linear;
+}
+
+@keyframes shake {
+    0% {
+        transform: translateX(-5px);
+    }
+
+    20% {
+        transform: translateX(10px);
+    }
+
+    40% {
+        transform: translateX(-10px);
+    }
+
+    60% {
+        transform: translateX(5px);
+    }
+
+    80% {
+        transform: translateX(-5px);
+    }
+
+    100% {
+        transform: translateX(0px);
+    }
+}
+
+.error-message {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 10px;
+    margin-top: 5px;
+    color: transparent;
+    transition: all 0.3s linear;
+}
+
+input.invalid {
+    border-color: red;
+    color: red;
+    animation-name: shake;
+    animation-duration: 0.3s;
+    animation-timing-function: linear;
+}
+
+.form-group:has(input.invalid) .error-message {
+    color: red;
+}
+
+.form-group:has(input.invalid) i {
+    color: red;
+}
+
+input.valid{
+    border-color: rgb(0, 105, 42);
+    color: rgb(0, 105, 42);
+}
+
+.form-group:has(input.valid) i{
+    color: rgb(0, 105, 42);
+}
