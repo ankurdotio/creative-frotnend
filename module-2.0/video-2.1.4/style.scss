@@ -1,0 +1,156 @@
+* {
+    margin: 0%;
+    padding: 0%;
+    box-sizing: border-box;
+}
+
+html,
+body {
+    width: 100%;
+}
+
+
+@mixin flex-column($gap){
+    display: flex;
+    flex-direction: column;
+    gap: $gap;
+}
+
+main {
+    width: 100%;
+    padding-top: 8rem;
+
+    .view-1 {
+        width: 100%;
+        padding-inline: 2rem;
+
+        @include flex-column(3rem);
+
+        .top {
+
+            @include flex-column(1rem);
+
+            h1 {
+                font-size: 3.2rem;
+                text-align: center;
+                font-weight: 300;
+            }
+
+            p {
+                font-family: Arial, Helvetica, sans-serif;
+                text-align: center;
+                font-size: 1.2rem;
+                line-height: 1.4;
+            }
+        }
+
+        .bottom {
+
+            .images {
+                @include flex-column(1.5rem);
+            }
+
+            .secondary{
+                display: none;
+            }
+
+            .card {
+
+                @include flex-column(1rem);
+
+                .top {
+                    border-radius: 1rem;
+                    overflow: hidden;
+
+                    img{
+                        transition: all 0.7s cubic-bezier(0.19, 1, 0.22, 1);
+                    }
+
+                    img:hover{
+                        transform: scale(1.1);
+                    }
+                }
+
+                
+
+                .bottom {
+                    display: flex;
+                    justify-content: space-between;
+
+                    h1,
+                    p {
+                        font-size: 1rem;
+                        font-family: Arial, Helvetica, sans-serif;
+                    }
+
+                    h1 {
+                        font-weight: 200;
+                    }
+
+                    p {
+                        opacity: 0.6;
+                        font-weight: 100;
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+@media (min-width:1020px) {
+    main {
+        padding-top: 12rem;
+
+        .view-1 {
+            padding-inline: 4rem;
+
+            .top {
+                flex-direction: row;
+                justify-content: space-between;
+                align-items: flex-end;
+
+                h1 {
+                    font-size: 5rem;
+                    text-align: left;
+                }
+
+                p {
+                    text-align: left;
+                }
+            }
+
+            .bottom {
+                width: 100%;
+
+               @include flex-column(2rem);
+
+                .images {
+                    width: 100%;
+                    flex-direction: row;
+
+                    .card {
+                        width: 33%;
+
+                        .top {
+                            width: 100%;
+
+                            img {
+                                width: 100%;
+                                object-fit: cover;
+                            }
+                        }
+
+                        .bottom{
+                            flex-direction: row;
+                        }
+                    }
+                }
+
+                .secondary{
+                    display: flex;
+                }
+            }
+        }
+    }
+}
