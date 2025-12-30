@@ -165,7 +165,6 @@ main .view-3 span {
   animation-duration: 5s;
   animation-timing-function: linear;
   animation-iteration-count: infinite;
-  outline: 1px solid red;
 }
 main .view-3 img {
   height: 1.2rem;
