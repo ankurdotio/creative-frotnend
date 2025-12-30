@@ -198,18 +198,93 @@ main {
         span {
             display: flex;
             animation-name: marquee-animation;
-            animation-duration: 5s;
+            animation-duration: 10s;
             animation-timing-function: linear;
             animation-iteration-count: infinite;
-
-          
         }
 
-    
+
 
         img {
             height: 1.2rem;
             margin-inline: 3rem;
+        }
+    }
+
+    .view-4 {
+        padding-inline: 2rem;
+
+        @include flex-column(2rem);
+
+        .title {
+            p {
+                font-family: Arial, Helvetica, sans-serif;
+                font-weight: 200;
+                text-transform: uppercase;
+                font-size: 0.9rem;
+            }
+        }
+
+        .content {
+            @include flex-column(2rem);
+
+            h1 {
+                font-size: 2.5rem;
+                font-weight: 200;
+            }
+
+            .paragraphs {
+                @include flex-column(2rem);
+            }
+
+            p {
+                font-family: Arial, Helvetica, sans-serif;
+                line-height: 1.5;
+                opacity: 0.6;
+            }
+
+            .visuals,
+            .images {
+                @include flex-column(1rem);
+            }
+
+            img {
+                width: 100%;
+                aspect-ratio: 5/3.2;
+                object-fit: cover;
+                border-radius: 1rem;
+            }
+        }
+
+        .card {
+            background-color: whitesmoke;
+            padding: 2rem;
+
+            border-radius: 1rem;
+
+            @include flex-column(1rem);
+
+            h1 {
+                font-weight: 100;
+            }
+
+            p {
+                font-family: Arial, Helvetica, sans-serif;
+                line-height: 1.5;
+                opacity: 0.6;
+            }
+
+            button {
+                background-color: black;
+                color: white;
+                border: none;
+                padding-block: 0.5rem;
+                border-radius: 0.5rem;
+            }
+        }
+
+        .desktop-view {
+            display: none;
         }
     }
 }
@@ -291,6 +366,58 @@ main {
                 .content-heading {
                     font-size: 4.5rem;
                 }
+            }
+        }
+
+        .view-4 {
+            padding-inline: 7rem;
+            flex-direction: row;
+            gap: 5rem;
+
+            .top {
+                @include flex-column(1rem);
+                width: 30%;
+            }
+
+            .content {
+                width: 70%;
+
+                h1 {
+                    font-size: 4.5rem;
+                }
+
+                .paragraphs {
+                    flex-direction: row;
+
+                    p {
+                        line-height: 2;
+                    }
+                }
+
+                .images {
+                    flex-direction: row;
+
+                    .large-img {
+                        width: 60%;
+                    }
+
+                    .small-img {
+                        width: 40%;
+                    }
+                }
+            }
+
+            .mobile-view {
+                display: none;
+            }
+
+            .desktop-view {
+                display: flex;
+            }
+
+            .card{
+                position: sticky;
+                top: 3rem;
             }
         }
     }
