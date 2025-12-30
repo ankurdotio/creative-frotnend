@@ -10,7 +10,7 @@ body {
 }
 
 
-@mixin flex-column($gap){
+@mixin flex-column($gap) {
     display: flex;
     flex-direction: column;
     gap: $gap;
@@ -19,6 +19,9 @@ body {
 main {
     width: 100%;
     padding-top: 8rem;
+    padding-bottom: 90rem;
+
+    @include flex-column(3rem);
 
     .view-1 {
         width: 100%;
@@ -50,7 +53,7 @@ main {
                 @include flex-column(1.5rem);
             }
 
-            .secondary{
+            .secondary {
                 display: none;
             }
 
@@ -62,16 +65,16 @@ main {
                     border-radius: 1rem;
                     overflow: hidden;
 
-                    img{
+                    img {
                         transition: all 0.7s cubic-bezier(0.19, 1, 0.22, 1);
                     }
 
-                    img:hover{
+                    img:hover {
                         transform: scale(1.1);
                     }
                 }
 
-                
+
 
                 .bottom {
                     display: flex;
@@ -95,12 +98,129 @@ main {
             }
         }
     }
+
+    .view-2 {
+        padding-inline: 2rem;
+
+        @include flex-column(2rem);
+
+        .title {
+            p {
+                font-family: Arial, Helvetica, sans-serif;
+                text-transform: uppercase;
+                font-size: 0.75rem;
+            }
+        }
+
+        .content {
+
+            @include flex-column(2rem);
+
+
+            .content-heading {
+                font-size: 2.5rem;
+                font-weight: 200;
+            }
+
+            .elements {
+                display: flex;
+                gap: 2rem;
+
+                flex-wrap: wrap;
+            }
+
+            .elem {
+                background-color: whitesmoke;
+                padding: 2rem;
+                border-radius: 0.75rem;
+                max-width: 370px;
+
+                @include flex-column(2rem);
+
+                .title {
+                    display: flex;
+                    gap: 1rem;
+                    align-items: center;
+
+                    .number {
+                        padding-inline: 1rem;
+                        padding-block: 0.75rem;
+                        border-radius: 0.5rem;
+                        background-color: black;
+                        color: white;
+                    }
+
+                    h1 {
+                        font-size: 1.75rem;
+                        font-weight: 300;
+                    }
+                }
+
+                p {
+                    font-family: Arial, Helvetica, sans-serif;
+                    line-height: 1.5;
+                    font-size: 1.1rem;
+                    opacity: 0.6;
+                }
+
+                a {
+                    text-transform: uppercase;
+                    font-family: Arial, Helvetica, sans-serif;
+                    font-size: 0.75rem;
+                    color: black;
+                }
+            }
+        }
+    }
+
+    .view-3 {
+        padding-inline: 2rem;
+
+        @keyframes marquee-animation {
+            from {
+                transform: translateX(0%);
+            }
+
+            to {
+                transform: translateX(-100%);
+            }
+        }
+
+        .marquee {
+            border-radius: 1rem;
+            overflow: hidden;
+            background-color: black;
+            padding-block: 2rem;
+            display: flex;
+        }
+
+
+        span {
+            display: flex;
+            animation-name: marquee-animation;
+            animation-duration: 5s;
+            animation-timing-function: linear;
+            animation-iteration-count: infinite;
+            outline: 1px solid red;
+
+          
+        }
+
+    
+
+        img {
+            height: 1.2rem;
+            margin-inline: 3rem;
+        }
+    }
 }
 
 
 @media (min-width:1020px) {
     main {
         padding-top: 12rem;
+
+        gap: 9rem;
 
         .view-1 {
             padding-inline: 4rem;
@@ -123,7 +243,7 @@ main {
             .bottom {
                 width: 100%;
 
-               @include flex-column(2rem);
+                @include flex-column(2rem);
 
                 .images {
                     width: 100%;
@@ -141,14 +261,36 @@ main {
                             }
                         }
 
-                        .bottom{
+                        .bottom {
                             flex-direction: row;
                         }
                     }
                 }
 
-                .secondary{
+                .secondary {
                     display: flex;
+                }
+            }
+        }
+
+        .view-2 {
+            flex-direction: row;
+            padding-inline: 7rem;
+
+            .title {
+                width: 40%;
+
+                p {
+                    position: sticky;
+                    top: 3rem;
+                }
+            }
+
+            .content {
+                width: 60%;
+
+                .content-heading {
+                    font-size: 4.5rem;
                 }
             }
         }
