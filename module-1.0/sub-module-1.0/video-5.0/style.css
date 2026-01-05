@@ -1,0 +1,29 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+html,body{
+    height: 100%;
+    width: 100%;
+}
+
+body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* BOX MODEL */
+
+div{
+    
+    padding: 10px;
+
+    border: 16px dotted black;
+    margin: 20px;
+
+    background: red border-box;
+}

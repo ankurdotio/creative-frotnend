@@ -1,0 +1,22 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html,
+body {
+    height: 100%;
+    width: 100%;
+}
+
+h1 {
+    color: rgb(7, 112, 72);
+    font-family: monospace;
+}
+
+div{
+    height: 100px;
+    width: 100px;
+    background-color: rgb(53, 95, 60);
+}
